@@ -1,0 +1,33 @@
+{
+  "trace_id": "adc-p0-2026-10-12-001",
+  "project": "ADC",
+  "phase": "P0",
+  "mode": "M0",
+  "started_at": "2026-10-12T16:22:23Z",
+  "ended_at": null,
+  "actions": [
+    {
+      "action": "Create initial README in RidzBuilder/ADC",
+      "status": "PASS",
+      "evidence": "Commit 59c6be83d7abac9b4a5cfdd42d156ee953d93d98; commit read-back returned the expected README diff."
+    },
+    {
+      "action": "Commit consolidated P0 scaffold",
+      "status": "PENDING",
+      "evidence": null
+    },
+    {
+      "action": "Read back scaffold files and verify contents",
+      "status": "PENDING",
+      "evidence": null
+    }
+  ],
+  "result": "PENDING",
+  "external_cost": "none",
+  "deployment": false,
+  "notes": [
+    "User explicitly approved writing P0 foundation to RidzBuilder/ADC.",
+    "No branch or pull request created.",
+    "No deployment, client communication, paid service, or secrets involved."
+  ]
+}

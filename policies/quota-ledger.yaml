@@ -1,0 +1,31 @@
+version: "0.1"
+updated_on: "2026-10-12"
+note: "Snapshot is not live account telemetry. Verify current official limits before quota-dependent work."
+thresholds:
+  warning_percent: 70
+  stop_percent: 90
+providers:
+  github:
+    plan: UNKNOWN
+    limit: UNKNOWN
+    usage: UNKNOWN
+    remaining: UNKNOWN
+    evidence: "Not checked in this run"
+  vercel:
+    plan: UNKNOWN
+    limit: UNKNOWN
+    usage: UNKNOWN
+    remaining: UNKNOWN
+    use_in_this_run: false
+  supabase:
+    plan: UNKNOWN
+    limit: UNKNOWN
+    usage: UNKNOWN
+    remaining: UNKNOWN
+    use_in_this_run: false
+  chatgpt_api:
+    plan: UNKNOWN
+    limit: UNKNOWN
+    usage: UNKNOWN
+    remaining: UNKNOWN
+    use_in_this_run: false

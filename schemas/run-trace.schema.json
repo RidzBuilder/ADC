@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ADC Run Trace",
+  "type": "object",
+  "required": ["trace_id", "project", "phase", "mode", "started_at", "actions", "result", "external_cost", "deployment"],
+  "properties": {
+    "trace_id": { "type": "string", "minLength": 1 },
+    "project": { "const": "ADC" },
+    "phase": { "type": "string" },
+    "mode": { "enum": ["M0", "M1"] },
+    "started_at": { "type": "string", "format": "date-time" },
+    "ended_at": { "type": ["string", "null"], "format": "date-time" },
+    "actions": { "type": "array", "items": { "type": "object", "required": ["action", "status"], "properties": { "action": { "type": "string" }, "status": { "enum": ["PASS", "FAIL", "BLOCKED", "PENDING"] }, "evidence": { "type": ["string", "null"] } }, "additionalProperties": false } },
+    "result": { "enum": ["PASS", "FAIL", "BLOCKED", "PENDING"] },
+    "external_cost": { "type": "string", "enum": ["none", "unknown", "incurred"] },
+    "deployment": { "type": "boolean" },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

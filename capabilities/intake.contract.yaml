@@ -1,0 +1,14 @@
+id: intake
+version: "0.1"
+purpose: Capture the business context and scope for a digital audit.
+inputs:
+  required: [business_name_or_alias, business_type, target_market, audit_scope]
+outputs:
+  required: [intake_summary, missing_information, consent_and_scope]
+constraints:
+  - Do not invent facts when information is missing.
+  - Confirm the target website is owned by the user or explicitly authorized.
+failure_cases:
+  - missing_business_context
+  - unauthorized_target
+acceptance: "A human can review the summary and see all missing information."

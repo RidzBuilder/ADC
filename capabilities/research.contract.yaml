@@ -1,0 +1,15 @@
+id: research
+version: "0.1"
+purpose: Collect evidence from public, permitted sources for the agreed audit scope.
+inputs:
+  required: [intake_summary, audit_scope]
+outputs:
+  required: [findings, source_urls, observed_at, limitations]
+constraints:
+  - Separate observed facts from inference and recommendations.
+  - Cite source URLs for externally researched claims.
+  - Prefer native web research; do not add a crawler without a demonstrated need.
+failure_cases:
+  - no_reliable_sources
+  - source_unavailable
+acceptance: "Each factual finding has evidence or is explicitly marked unverified."

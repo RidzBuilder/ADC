@@ -1,0 +1,13 @@
+{
+  "project": "ADC",
+  "phase": "P0",
+  "next_phase": "P1",
+  "mode": "M0",
+  "runtime_status": "not_implemented",
+  "deployment_status": "not_deployed",
+  "m0_successful_runs": 0,
+  "m1_transition_allowed": false,
+  "target_niche": "UMKM (working default; confirm with user)",
+  "target_site": null,
+  "last_trace": "traces/2026-10-12-p0-foundation.json"
+}

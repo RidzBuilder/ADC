@@ -1,0 +1,15 @@
+id: audit
+version: "0.1"
+purpose: Turn evidence into a prioritized digital audit.
+inputs:
+  required: [intake_summary, findings]
+outputs:
+  required: [findings_by_category, severity, evidence, confidence, unknowns]
+constraints:
+  - Every issue must link to evidence or be labelled as a hypothesis.
+  - Explain business impact in plain Indonesian.
+  - Do not claim automated tests ran unless there is a test result.
+failure_cases:
+  - insufficient_evidence
+  - conflicting_evidence
+acceptance: "A reviewer can trace each high-priority issue to supporting evidence."

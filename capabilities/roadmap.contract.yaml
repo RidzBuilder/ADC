@@ -1,0 +1,15 @@
+id: roadmap
+version: "0.1"
+purpose: Propose an actionable roadmap based on the audit findings.
+inputs:
+  required: [audit_findings, business_context, constraints]
+outputs:
+  required: [prioritized_actions, effort_estimates, expected_outcomes, dependencies]
+constraints:
+  - Mark estimates as estimates, not guarantees.
+  - Prioritize low-cost, high-impact actions where evidence supports them.
+  - Keep paid tools optional and include a free fallback.
+failure_cases:
+  - priorities_not_supported_by_evidence
+  - constraints_missing
+acceptance: "Actions have a reason, priority, owner role, and observable completion signal."

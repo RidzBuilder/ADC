@@ -1,0 +1,34 @@
+version: "0.1"
+project: ADC
+default_mode: M0
+language: id
+rules:
+  - id: A01
+    action: read_public_sources
+    decision: allowed
+    conditions: ["respect source access and terms"]
+  - id: A02
+    action: write_project_repository
+    decision: requires_explicit_approval
+    conditions: ["approval must identify repository and scope"]
+  - id: A03
+    action: create_branch_or_pull_request
+    decision: requires_separate_explicit_approval
+  - id: A04
+    action: deploy_or_publish_production
+    decision: requires_explicit_approval
+  - id: A05
+    action: contact_client_or_send_external_message
+    decision: requires_explicit_approval
+  - id: A06
+    action: incur_cost_or_enable_paid_service
+    decision: requires_explicit_approval
+  - id: A07
+    action: request_or_store_secret
+    decision: forbidden_in_chat_or_repository
+  - id: A08
+    action: claim_capability_success
+    decision: requires_readback_or_test_evidence
+  - id: A09
+    action: record_run_trace
+    decision: required

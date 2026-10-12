@@ -1,0 +1,15 @@
+id: evaluation
+version: "0.1"
+purpose: Evaluate deliverable quality and record pass/fail evidence.
+inputs:
+  required: [report, acceptance_checks]
+outputs:
+  required: [check_results, failures, remediation_actions, trace_reference]
+constraints:
+  - Use PASS/FAIL/BLOCKED with evidence.
+  - Include at least one forced-failure test for every P1+ phase.
+  - A failed check must not be rewritten as a pass without a rerun.
+failure_cases:
+  - missing_evidence
+  - forced_failure_not_detected
+acceptance: "The evaluation records evidence for every check and preserves failures."
