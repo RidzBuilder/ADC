@@ -1,15 +1,12 @@
-id: report
-version: "0.1"
-purpose: Produce a client-reviewable digital audit and roadmap report.
-inputs:
-  required: [audit_findings, prioritized_actions, sources, limitations]
-outputs:
-  required: [executive_summary, evidence_based_findings, roadmap, assumptions, sources]
-constraints:
-  - Write in Indonesian by default.
-  - Distinguish verified findings, inference, and unknowns.
-  - Drafting does not authorize sending the report to a client.
-failure_cases:
-  - missing_source_list
-  - unsupported_claim
-acceptance: "A human reviewer can identify evidence, caveats, and next actions."
+id: cap.consult.report_generate
+purpose: Menyusun laporan Indonesia yang memisahkan temuan situs, catatan pengembangan, dan keterbatasan.
+input_schema:
+  required: [intake_brief, site_findings, adc_development_notes, unknowns, methodology, evidence_ledger]
+  properties: {intake_brief: object, site_findings: "array[object]", adc_development_notes: "array[object]", unknowns: "array[string]", methodology: object, evidence_ledger: "array[object]"}
+preconditions: [Temuan memiliki URL bukti dan confidence, Data belum diperiksa ditulis UNKNOWN, Laporan latihan diberi label LATIHAN]
+execution_contract: [Prioritas temuan memakai Tinggi Sedang Rendah bukan P1/P2, Pisahkan Temuan Situs dan Catatan Pengembangan ADC, Cantumkan metode provider jumlah fetch diketahui dan batasan]
+output_schema:
+  required: [report_title, label, methodology, site_findings, adc_development_notes, unknowns, limitations, approval_request]
+  properties: {report_title: string, label: string, methodology: object, site_findings: "array[object]", adc_development_notes: "array[object]", unknowns: "array[string]", limitations: "array[string]", approval_request: object}
+failure_modes: [finding_without_url, finding_without_confidence, priority_label_invalid, practice_report_missing_label, unsupported_metadata_claim, approval_request_missing]
+authority_required: [Draf untuk tinjauan manusia; jangan kirim atau terbitkan otomatis, Persetujuan langsung sebelum publikasi atau pengiriman]

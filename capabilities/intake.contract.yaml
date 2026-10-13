@@ -1,14 +1,12 @@
-id: intake
-version: "0.1"
-purpose: Capture the business context and scope for a digital audit.
-inputs:
-  required: [business_name_or_alias, business_type, target_market, audit_scope]
-outputs:
+id: cap.consult.intake_brief
+purpose: Mengumpulkan konteks bisnis dan otorisasi sebelum audit.
+input_schema:
+  required: [business_name_or_alias, business_type, target_market, audit_goal, audit_scope, target_website, authorization_confirmation]
+  properties: {business_name_or_alias: string, business_type: string, target_market: string, audit_goal: string, audit_scope: "array[string]", target_website: uri, authorization_confirmation: boolean}
+preconditions: [Target dimiliki pengguna atau ada izin eksplisit, Informasi hilang ditandai UNKNOWN]
+execution_contract: [Ringkas brief tanpa mengarang fakta, Catat informasi kurang, Konfirmasi batasan sebelum tindakan di luar baca publik]
+output_schema:
   required: [intake_summary, missing_information, consent_and_scope]
-constraints:
-  - Do not invent facts when information is missing.
-  - Confirm the target website is owned by the user or explicitly authorized.
-failure_cases:
-  - missing_business_context
-  - unauthorized_target
-acceptance: "A human can review the summary and see all missing information."
+  properties: {intake_summary: object, missing_information: "array[string]", consent_and_scope: object}
+failure_modes: [missing_business_context, missing_target_website, unauthorized_target, scope_not_confirmed]
+authority_required: [Persetujuan target dan ruang lingkup sebelum fetch, Persetujuan terpisah untuk mutasi eksternal deployment pesan klien atau biaya]

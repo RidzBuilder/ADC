@@ -1,0 +1,12 @@
+id: cap.agency.approval_request
+purpose: Meminta keputusan manusia dengan batas kewenangan eksplisit.
+input_schema:
+  required: [artifact_id, artifact_summary, requested_decisions, proposed_next_action]
+  properties: {artifact_id: string, artifact_summary: string, requested_decisions: "array[object]", proposed_next_action: string}
+preconditions: [Jelaskan yang disetujui dan tidak, Persetujuan rencana bukan persetujuan commit merge deploy biaya atau pesan eksternal]
+execution_contract: [Tampilkan pilihan keputusan eksplisit, Catat ruang lingkup disetujui dan tertunda, Jika ambigu jangan mutasi dan minta klarifikasi]
+output_schema:
+  required: [approval_status, approved_scope, rejected_scope, pending_decisions]
+  properties: {approval_status: "enum[APPROVED, REJECTED, PARTIAL, PENDING]", approved_scope: "array[string]", rejected_scope: "array[string]", pending_decisions: "array[string]"}
+failure_modes: [ambiguous_approval, scope_mismatch, approval_inferred_from_silence]
+authority_required: [Hanya persetujuan langsung dan spesifik mengizinkan tindakan, Merge deployment biaya dan pesan eksternal perlu persetujuan terpisah]

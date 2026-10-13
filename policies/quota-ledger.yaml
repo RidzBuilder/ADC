@@ -1,31 +1,45 @@
-version: "0.1"
-updated_on: "2026-10-12"
-note: "Snapshot is not live account telemetry. Verify current official limits before quota-dependent work."
-thresholds:
-  warning_percent: 70
-  stop_percent: 90
+version: "0.2"
+updated_on: "2026-10-13"
+note: "Published limits are not account telemetry. Unknown account usage stays UNKNOWN."
+thresholds: {warning_percent: 70, stop_percent: 90}
 providers:
   github:
     plan: UNKNOWN
-    limit: UNKNOWN
-    usage: UNKNOWN
+    limits:
+      - {name: "GitHub Actions minutes, Free", amount: 2000, period: "per month", official_url: "https://docs.github.com/en/billing/reference/product-usage-included", checked_on: "2026-10-13"}
+      - {name: "GitHub Actions storage, Free", amount: 500, unit: MB, period: "included storage", official_url: "https://docs.github.com/en/billing/reference/product-usage-included", checked_on: "2026-10-13"}
+    account_usage: UNKNOWN
     remaining: UNKNOWN
-    evidence: "Not checked in this run"
   vercel:
-    plan: UNKNOWN
-    limit: UNKNOWN
-    usage: UNKNOWN
+    plan: Hobby
+    limits:
+      - {name: "Deployments created", amount: 100, period: "per day", official_url: "https://vercel.com/docs/limits", checked_on: "2026-10-13"}
+    account_usage: UNKNOWN
     remaining: UNKNOWN
     use_in_this_run: false
   supabase:
-    plan: UNKNOWN
-    limit: UNKNOWN
-    usage: UNKNOWN
+    plan: Free
+    limits:
+      - {name: "Database size", amount: 500, unit: "MB per project", period: ongoing, official_url: "https://supabase.com/pricing", checked_on: "2026-10-13"}
+    account_usage: UNKNOWN
     remaining: UNKNOWN
     use_in_this_run: false
-  chatgpt_api:
+  firecrawl:
     plan: UNKNOWN
-    limit: UNKNOWN
-    usage: UNKNOWN
+    limits:
+      - {name: "Included credits", amount: 1000, period: "current balance period 2026-09-26 to 2026-10-26", official_url: "https://www.firecrawl.dev/pricing", checked_on: "2026-10-13"}
+    account_usage:
+      current_balance_remaining: 978
+      historical_by_api_key:
+        - {name: "Connected app", credits_used: 32, period_start: "2026-10-01", period_end: UNKNOWN}
+        - {name: "Default", credits_used: 5, period_start: "2026-10-01", period_end: UNKNOWN}
+      attribution_of_21_credit_pre_fetch_delta: UNKNOWN
+      note: "OBSERVATION only. One credit attributed to page-51 fetch. User will inspect dashboard. No further fetch authorized."
+    remaining: 978
+    use_in_this_run: true
+  openai_api:
+    plan: UNKNOWN
+    limits: UNKNOWN
+    account_usage: UNKNOWN
     remaining: UNKNOWN
     use_in_this_run: false
