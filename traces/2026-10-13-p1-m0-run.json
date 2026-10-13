@@ -32,9 +32,14 @@
       "evidence": "Balance 978/1000; historical Connected app 32 and Default 5; attribution of 21-credit delta UNKNOWN."
     },
     {
-      "action": "Remote read-back and remote YAML validation",
-      "status": "PENDING",
-      "evidence": null
+      "action": "Remote YAML parser across branch YAML files",
+      "status": "PASS",
+      "evidence": "PyYAML safe_load succeeded on 11 remote YAML files: six canonical P1 contracts, two archived contracts, P2 roadmap, authority policy, and quota ledger. Six canonical contracts also passed eight-field validation."
+    },
+    {
+      "action": "Read back renamed summary, trace, and report",
+      "status": "PASS",
+      "evidence": "GitHub read-back confirmed docs/ADC-ARCHITECTURE-SUMMARY.md and traces/2026-10-13-p1-m0-run.json; old paths return 404; report has DRAF/LATIHAN and S-03 under Belum diuji / UNKNOWN."
     },
     {
       "action": "Merge to main",
@@ -46,9 +51,8 @@
   "external_cost": "incurred",
   "deployment": false,
   "notes": [
-    "Live site evidence E2; repository artifacts capped at E3 after read-back.",
-    "User authorized only branch p1-m0-reconcile and one consolidated commit on that branch.",
-    "No merge, deployment, client communication, or additional Firecrawl fetch authorized.",
-    "Cost note: one Firecrawl credit for forced-failure fetch; attribution of other balance delta UNKNOWN."
+    "Live site evidence E2; repository artifacts capped at E3.",
+    "Branch p1-m0-reconcile has two commits ahead of main; no merge or changes to main.",
+    "One Firecrawl credit for forced-failure fetch; attribution of other balance delta UNKNOWN. No additional fetch authorized."
   ]
 }

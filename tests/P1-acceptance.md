@@ -6,6 +6,6 @@
 - [ ] Untested title/meta description/H1 fields are UNKNOWN, not findings.
 - [ ] Practice report is labeled LATIHAN; priorities use Tinggi/Sedang/Rendah, not P1/P2.
 - [ ] Forced-failure test: page-51 returned HTTP 404 from the single permitted Firecrawl fetch; record as ADC note, not site finding.
-- [ ] Trace records failed web fetch, unapproved provider switch, HTTP 404, scrape ID, and credit observation.
+- [ ] Trace records failed web fetch, unapproved provider switch, HTTP 404, scrape ID, and credit observation in traces/2026-10-13-p1-m0-run.json.
 - [ ] Read back changed/moved remote files and validate YAML plus eight fields for all six canonical contracts.
 - [ ] No merge to main without separate direct approval.
