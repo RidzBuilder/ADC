@@ -2,6 +2,14 @@
 
 ADC is an R&D project for a guided digital-consulting workflow. This repository is the source of truth for P0–P2 project state, contracts, policies, and run traces.
 
+## Source documents
+
+- [ADC architecture (authoritative project source)](docs/ADC-ARCHITECTURE.md)
+- [ChatGPT operating instructions](docs/ADC-CHATGPT-INSTRUCTIONS.md)
+- [Architecture summary (non-authoritative; convenience only)](docs/ADC-ARCHITECTURE-SUMMARY.md)
+
+The summary is not a substitute for the original architecture document. When in doubt, use the authoritative architecture and operating-instructions files above.
+
 ## Current scope
 
 - **Phase:** P0 foundation, preparing the P1 vertical slice.
@@ -12,7 +20,7 @@ ADC is an R&D project for a guided digital-consulting workflow. This repository 
 
 ## Repository map
 
-- `docs/` — decisions and provider choices.
+- `docs/` — source documents, decisions, and provider choices.
 - `capabilities/` — initial capability contracts for the P1 vertical slice.
 - `policies/` — authority boundaries and quota ledger.
 - `schemas/` — run trace schema.
