@@ -1,0 +1,19 @@
+id: cap.digital.site_crawl
+purpose: Mengambil halaman publik dalam batas URL yang disetujui dan merekam hasil fetch.
+input_schema:
+  required: [target_website, allowed_urls, max_pages, fetch_provider, approval_reference]
+  properties: {target_website: uri, allowed_urls: "array[uri]", max_pages: integer, fetch_provider: string, approval_reference: string}
+preconditions:
+  - Target dan URL berada dalam ruang lingkup yang disetujui.
+  - Provider dan batas kuota diperiksa; jika kuota UNKNOWN, berhenti dan tanyakan.
+  - Provider yang sudah disetujui boleh dipakai dalam ruang lingkup dan kuota tanpa izin per fetch.
+  - Perpindahan ke provider lain selalu membutuhkan izin langsung terlebih dahulu.
+execution_contract:
+  - Fetch hanya URL yang diizinkan dan tidak melebihi max_pages.
+  - Catat URL, waktu, status HTTP, provider, ID permintaan, dan error jika tersedia.
+  - Jika fetch gagal, catat lalu minta keputusan sebelum mengganti provider.
+output_schema:
+  required: [pages, fetch_log, coverage, limitations]
+  properties: {pages: "array[object]", fetch_log: "array[object]", coverage: object, limitations: "array[string]"}
+failure_modes: [target_not_authorized, provider_not_approved, quota_unknown_or_exceeded, fetch_rejected, http_error, partial_coverage]
+authority_required: [Persetujuan target dan ruang lingkup, Izin langsung wajib sebelum pindah provider; provider disetujui boleh digunakan dalam batas kuota tanpa izin tiap fetch]

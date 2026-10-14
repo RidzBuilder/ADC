@@ -1,0 +1,12 @@
+id: cap.core.verify_readback
+purpose: Memverifikasi perubahan melalui read-back dan pemeriksaan independen.
+input_schema:
+  required: [expected_state, observed_state, verification_method, evidence_reference]
+  properties: {expected_state: object, observed_state: object, verification_method: string, evidence_reference: "array[string]"}
+preconditions: [Bukti berasal dari tool atau artefak tersedia, Bedakan validasi lokal dari read-back remote]
+execution_contract: [Bandingkan expected dan observed state, Parse YAML remote dan cek field wajib, Laporkan PASS FAIL atau BLOCKED dengan bukti dan batasan]
+output_schema:
+  required: [status, checks, evidence, limitations]
+  properties: {status: "enum[PASS, FAIL, BLOCKED]", checks: "array[object]", evidence: "array[string]", limitations: "array[string]"}
+failure_modes: [readback_unavailable, state_mismatch, parser_failure, required_field_missing, evidence_not_reproducible]
+authority_required: [Verifikasi read-only diperbolehkan pada artefak disetujui, Perbaikan repo perlu otorisasi perubahan]

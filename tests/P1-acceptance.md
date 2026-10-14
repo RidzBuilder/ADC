@@ -1,15 +1,11 @@
 # P1 manual acceptance checklist
-
-Run this checklist manually for one complete M0 vertical slice. Do not mark PASS without evidence.
-
-- [ ] Intake captures business context, audit scope, missing information, and target-site authorization.
-- [ ] Research findings include public source URLs and observation dates.
-- [ ] Audit findings distinguish verified facts, inferences, confidence, and unknowns.
-- [ ] Roadmap priorities are linked to findings and include observable completion signals.
-- [ ] Report is in Indonesian and includes sources and limitations.
-- [ ] Evaluation records PASS/FAIL/BLOCKED for each check.
-- [ ] Forced-failure test: remove a required input and verify the workflow reports BLOCKED/FAIL rather than inventing a result.
-- [ ] Trace is written and read back successfully.
-- [ ] No deployment, client message, secret, or paid action occurs without explicit approval.
-
-Exit condition: one complete M0 run passes with trace evidence. Only then consider M1 connector-assisted mode.
+- [ ] Intake records business context, scope, missing information, and authorization.
+- [ ] Site crawl logs URL, HTTP status, provider, request ID, and scope.
+- [ ] Provider switch always requires direct prior permission; approved provider can be reused within scope/quota without approval per fetch.
+- [ ] Audit separates site findings from ADC development notes; each finding has URL, confidence, and evidence level.
+- [ ] Untested title/meta description/H1 fields are UNKNOWN, not findings.
+- [ ] Practice report is labeled LATIHAN; priorities use Tinggi/Sedang/Rendah, not P1/P2.
+- [ ] Forced-failure test: page-51 returned HTTP 404 from the single permitted Firecrawl fetch; record as ADC note, not site finding.
+- [ ] Trace records failed web fetch, unapproved provider switch, HTTP 404, scrape ID, and credit observation in traces/2026-10-13-p1-m0-run.json.
+- [ ] Read back changed/moved remote files and validate YAML plus eight fields for all six canonical contracts.
+- [ ] No merge to main without separate direct approval.
